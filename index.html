@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Ceritanya Jualan</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='css/bootstrap.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='css/headers.css'>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
+</head>
+
+<body>
+    <div id="app">
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container">
+                <a class="navbar-brand" href="#">Ini Jualan</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="./index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./product.html">Product</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./orders.html">Orders</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./cart.html">Cart</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <main>
+
+            <div class="px-4 py-5 my-5 text-center">
+                <img class="d-block mx-auto mb-4" src="./assets/logo_unindra_3.png" alt=""
+                    style="width:200px;height: auto;">
+                <h1 class="display-5 fw-bold text-body-emphasis">Tugas Projek Web Dasar</h1>
+                <h3 class="fw-bold text-body-emphasis">Punya Kelompok 2</h3>
+                <div class="col-lg-6 mx-auto">
+                    <p class="lead mb-4">Ini Projek Tugas Web dasar, ceritanya pengen bikin web alakadarnya tapi
+                        ketagihan jadilah seperti ini</p>
+                    <p>
+                        Projek ini dibuat menggunakan Boostrap 5 dan Vue Js agar kelihatan dinamis dan lebih mudah dibanding JS Native,
+                        Projek ini menggunakan fitur Local Storage yang dimiliki browser & RestApi dari <a href="https://fakestoreapi.com/">Fakestoreapi.com</a> agar produk bisa ditampilan otomatis
+                        karena ini sebenernya statis tapi pengen dinamis
+                    </p>
+                    <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                        <button type="button" class="btn btn-primary btn-lg px-4 gap-3">Jajal Produk</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="b-example-divider"></div>
+            <div class="container px-4 py-5" id="icon-grid">
+                <h2 class="pb-2 border-bottom">Ini Orang - Orangnya</h2>
+
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 py-3">
+                    <div class="col d-flex align-items-start">
+                        <div>
+                            <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Rifki Alfariz Shidiq</h3>
+                            <p>202143500723</p>
+                        </div>
+                    </div>
+                    <div class="col d-flex align-items-start">
+                        <div>
+                            <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Rifki Alfariz Shidiq</h3>
+                            <p>202143500723</p>
+                        </div>
+                    </div>
+                    <div class="col d-flex align-items-start">
+                        <div>
+                            <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Rifki Alfariz Shidiq</h3>
+                            <p>202143500723</p>
+                        </div>
+                    </div>
+                    <div class="col d-flex align-items-start">
+                        <div>
+                            <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Rifki Alfariz Shidiq</h3>
+                            <p>202143500723</p>
+                        </div>
+                    </div>
+                    <div class="col d-flex align-items-start">
+                        <div>
+                            <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Rifki Alfariz Shidiq</h3>
+                            <p>202143500723</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="b-example-divider"></div>
+
+            <div class="container">
+                <footer class="py-1 my-2">
+                    <ul class="nav justify-content-center border-bottom mb-3">
+                        <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Home</a></li>
+                        <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Product</a></li>
+                        <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Orders</a></li>
+                        <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Cart</a></li>
+                    </ul>
+                    <p class="text-center text-body-secondary">&copy; 2023, Ini Ceritanya Footer Biar Keren dikit</p>
+                </footer>
+            </div>
+
+        </main>
+    </div>  
+</body>
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script src='js/bootstrap.js'></script>
+<script>
+    const { createApp, ref } = Vue
+    createApp({
+        setup() {
+            const message = ref('Hello vue!')
+            return {
+                message
+            }
+        },
+    }).mount('#app')
+</script>
+
+</html>
