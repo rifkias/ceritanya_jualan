@@ -33,7 +33,7 @@
                             <a class="nav-link" href="./orders.html">Orders</a>
                         </li>
                         <li class="nav-item">
-                            <span class="badge alert-primary" style="float:right;margin-bottom:-10px;color:black">1</span>
+                            <span class="badge alert-primary" style="float:right;margin-bottom:-10px;color:white;background-color: blue;">{{totalCart}}</span>
                             <a class="nav-link" href="./cart.html">Cart</a>
                         </li>
                     </ul>
@@ -141,6 +141,7 @@
                 products:{},
                 page:1,
                 perPage:9,
+                totalCart:0,
             }
         },
         // setup() {
@@ -174,12 +175,13 @@
                         cart.push(element);
                     });
                 }
-                console.log(cart);
                 if(!isDuplicate){
                     item.qty = 1;
                     cart.push(item);
                 }
                 localStorage.cart = JSON.stringify(cart);
+                this.getTotalItem();
+
             },
             pagination(type){
                 if(type == 'prev'){
@@ -190,9 +192,20 @@
                 }
                 this.fetchProduct();
             },
+            getTotalItem(){
+                let total=0;
+                if(localStorage.cart){
+                    let dummy = JSON.parse(localStorage.cart)
+                    dummy.forEach(element => {
+                        total = total+element.qty;
+                    });
+                }
+                this.totalCart = total;
+            }
         },
         mounted() {
             this.fetchProduct();
+            this.getTotalItem();
             console.log(this.getOffset());
         },
     }).mount('#app')

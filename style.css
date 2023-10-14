@@ -1,0 +1,45 @@
+.wrap{
+	width: 900px;
+	margin: 10px auto;
+}
+ 
+/*bagian header*/
+.wrap .header{
+	background: yellow;
+	/*height: 50px;*/
+	padding: 2px 10px;
+}
+.header marquee{
+    text-align: center;
+}
+.wrap .container { 
+    width: 100%;
+    border:1px solid black;
+    height: 100%;
+}
+.container .body1{
+    width:50%;
+    height: 500px;
+    background-color: pink;
+    float: left;
+    position: relative;
+}
+.container .body2{
+    width:50%;
+    height: 500px;
+    background-color: blue;
+    color: white;
+    float: left;
+}
+.no-margin{
+    margin:0;
+}
+table{
+    margin: 10px auto;
+    text-align: center;
+    width: 50%;
+}
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
