@@ -89,3 +89,8 @@
  .bd-mode-toggle .dropdown-menu .active .bi {
    display: block !important;
  }
+
+ .logo {
+  width: 200px;
+  height: auto;
+ }

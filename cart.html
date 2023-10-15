@@ -1,56 +1,189 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
-  </head>
-  <body>
-    <div class="wrap">
-      <div class="header">
-        <marquee behavior="" direction="down"><h1>Latihan Web</h1></marquee>
-      </div>
-      <div class="container">
-        <div class="body1">
-          <h2 class="no-margin">Materi HTML</h2> 
-          <ul class="no-margin">
-            <li>Html</li>
-            <li>Css</li>
-            <li>Javascript</li>
-          </ul>
-          <p style="position: absolute;bottom: 0; right: 0;margin-right: 10px;">
-            Rifki Alfariz Shidiq <br>
-            202143500723
-        </p>
-        </div>
-        <div class="body2">
-            <table  >
-                <tr>
-                    <td style="color: burlywood;">1</td>
-                    <td style="color: gold;" rowspan="2">2</td>
-                    <td style="color: red;" colspan="2">3</td>
-                </tr>
-                <tr>
-                    <td style="color: hotpink;">4</td>
-                    <td style="color: lavender;">5</td>
-                    <td style="color: yellowgreen;">6</td>
-                </tr>
-                <tr>
-                    <td rowspan="2" style="color: firebrick;">7</td>
-                    <td style="color: lawngreen;">8</td>
-                    <td style="color: bisque;" colspan="2">9</td>
-                </tr>
-                <tr>
-                    <td colspan="2" style="color: blueviolet;">10</td>
-                    <td style="color: silver;">11</td>
-                </tr>
-                <tr>
-                    <td colspan="4" style="color: skyblue;">12</td>
-                </tr>
-            </table>
-        </div>
-      </div>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Ceritanya Jualan</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='css/bootstrap.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='css/headers.css'>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
+</head>
+
+<body>
+    <div id="app">
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container">
+                <a class="navbar-brand" href="#">Ini Jualan</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="./index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="./product.html">Product</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./orders.html">Orders</a>
+                        </li>
+                        <li class="nav-item">
+                            <span class="badge alert-primary"
+                                style="float:right;margin-bottom:-10px;color:white;background-color: blue;">{{totalCart}}</span>
+                            <a class="nav-link" href="./cart.html">Cart</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <main>
+            <div class="container">
+                <div class="py-5 text-center">
+                    <img class="d-block mx-auto mb-4 logo" src="./assets/logo_unindra_3.png" alt="Logo Unindra">
+                    <h2>Ini Form Checkout</h2>
+                    <p class="lead">Form ini cuman ngambil dari template boostrap doang biar cepet kelarnya</p>
+                </div>
+                
+                <div class="row g-5 mb-4">
+                    <div class="col-md-5 col-lg-4 order-md-last">
+                        <h4 class="d-flex justify-content-between align-items-center mb-3">
+                            <span class="text-primary">Your cart</span>
+                            <span class="badge bg-primary rounded-pill">{{totalCart}}</span>
+                        </h4>
+                        <ul class="list-group mb-3">
+                            <li class="list-group-item d-flex justify-content-between lh-sm"  v-for="item in cartData">
+                                <div>
+                                    <h6 class="my-0">{{item.title}} x {{item.qty}}</h6>
+                                    <small class="text-body-secondary">{{item.description.substring(0,50)}}<span v-if="item.description.length > 50">....</span></small>
+                                    <br>
+                                    <small class="text-body-secondary">${{item.price}} x {{item.qty}}</small>
+                                </div>
+                                <span class="text-body-secondary">${{item.price * item.qty}}</span>
+                                <button class="btn btn-sm btn-danger ms-3" @click="deleteCart(item.id)" style="height: 20%;">X</button>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between">
+                                <span>Total (USD)</span>
+                                <strong>${{totalPrice}}</strong>
+                            </li>
+                        </ul>
+                
+                    </div>
+                    <div class="col-md-7 col-lg-8">
+                        <h4 class="mb-3">Billing address</h4>
+                        <form @submit.prevent="submitData()">
+                            <div class="row g-3">
+                                <div class="col-sm-6">
+                                    <label for="firstName" class="form-label">First name</label>
+                                    <input type="text" class="form-control" id="firstName" placeholder="First Name" v-model="forms.first_name" required>
+                                </div>
+                
+                                <div class="col-sm-6">
+                                    <label for="lastName" class="form-label">Last name</label>
+                                    <input type="text" class="form-control" id="lastName" placeholder="Last Name" v-model="forms.last_name" required>
+                                </div>
+                
+                                <div class="col-12">
+                                    <label for="email" class="form-label">Email <span
+                                            class="text-body-secondary">(Optional)</span></label>
+                                    <input type="email" class="form-control" id="email" placeholder="you@example.com" v-model="forms.email">
+                                </div>
+                
+                                <div class="col-12">
+                                    <label for="address" class="form-label">Address</label>
+                                    <input type="text" class="form-control" id="address" placeholder="1234 Main St" required v-model="forms.address">
+                                </div>
+                            </div>
+                
+                            <hr class="my-4">
+                
+                            <button class="w-100 btn btn-primary btn-lg" type="submit">Purchase Order</button>
+                        </form>
+                    </div>
+                </div>
+                <footer class="py-1 my-2">
+                    <ul class="nav justify-content-center border-bottom mb-3">
+                        <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Home</a></li>
+                        <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Product</a></li>
+                        <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Orders</a></li>
+                        <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Cart</a></li>
+                    </ul>
+                    <p class="text-center text-body-secondary">&copy; 2023, Ini Ceritanya Footer Biar Keren dikit</p>
+                </footer>
+            </div>
+
+        </main>
     </div>
-  </body>
+</body>
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script src='js/bootstrap.js'></script>
+<script>
+    const { createApp, ref, computed } = Vue
+    createApp({
+        data() {
+            return {
+                totalCart: 0,
+                totalPrice:0,
+                cartData:[],
+                forms:{},
+            }
+        },
+        // setup() {
+        //     const message = ref('Hello vue!')
+        //     return {
+        //         message,
+        //     }
+        // },
+        methods: {
+            deleteCart(id){
+                let datas = [];
+                if (localStorage.cart) {
+                    let dummy = JSON.parse(localStorage.cart)
+                    dummy.forEach(element => {
+                        if (id !== element.id) {
+                            datas.push(element);
+                        }
+                    });
+                }
+                alert("success delete cart");
+                localStorage.cart = JSON.stringify(datas);
+                this.getCartDetail();
+            },
+            getCartDetail(){
+                this.cartData = [];
+                if (localStorage.cart) {
+                    let dummy = JSON.parse(localStorage.cart)
+                    dummy.forEach(element => {
+                        this.cartData.push(element);
+                    });
+                }
+                this.getTotalItem();
+                console.log(this.cartData);
+            },
+            getTotalItem() {
+                this.totalPrice = 0;
+                let total = 0;
+                if (localStorage.cart) {
+                    let dummy = JSON.parse(localStorage.cart)
+                    dummy.forEach(element => {
+                        total = total + element.qty;
+                        this.totalPrice = this.totalPrice + (element.qty * element.price);
+                    });
+                }
+                this.totalCart = total;
+            },
+            submitData(){
+                console.log(this.forms);
+            }
+        },
+        mounted() {
+            this.getCartDetail();
+        },
+    }).mount('#app')
+</script>
+
 </html>
