@@ -54,7 +54,7 @@
                         karena ini sebenernya statis tapi pengen dinamis
                     </p>
                     <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-                        <button type="button" class="btn btn-primary btn-lg px-4 gap-3">Jajal Produk</button>
+                        <button type="button" @click="moveProduct" class="btn btn-primary btn-lg px-4 gap-3">Jajal Produk</button>
                     </div>
                 </div>
             </div>
@@ -72,28 +72,46 @@
                     </div>
                     <div class="col d-flex align-items-start">
                         <div>
-                            <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Rifki Alfariz Shidiq</h3>
-                            <p>202143500723</p>
+                            <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Ahmad Khoirul Ma'ali</h3>
+                            <p>202143500720</p>
                         </div>
                     </div>
                     <div class="col d-flex align-items-start">
                         <div>
-                            <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Rifki Alfariz Shidiq</h3>
-                            <p>202143500723</p>
+                            <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Dimas Rasyid </h3>
+                            <p>202143500729</p>
                         </div>
                     </div>
                     <div class="col d-flex align-items-start">
                         <div>
-                            <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Rifki Alfariz Shidiq</h3>
-                            <p>202143500723</p>
+                            <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">M Aji Pangestu</h3>
+                            <p>202143500829 </p>
                         </div>
                     </div>
                     <div class="col d-flex align-items-start">
                         <div>
-                            <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Rifki Alfariz Shidiq</h3>
-                            <p>202143500723</p>
+                            <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Waryono</h3>
+                            <p>201843579087</p>
                         </div>
                     </div>
+                    <div class="col d-flex align-items-start">
+                        <div>
+                            <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Taufik Hidayat</h3>
+                            <p>202143500828</p>
+                        </div>
+                    </div>
+                    <div class="col d-flex align-items-start">
+                        <div>
+                            <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Rizky M.anshori</h3>
+                            <p>202143500817</p>
+                        </div>
+                    </div>
+                    <div class="col d-flex align-items-start">
+                        <div>
+                            <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Mohammad Romadona</h3>
+                            <p>202143500781</p>
+                        </div>
+                    </div>  
                 </div>
             </div>
             <div class="b-example-divider"></div>
@@ -122,6 +140,11 @@
             const message = ref('Hello vue!')
             return {
                 message
+            }
+        },
+        methods: {
+            moveProduct(){
+                window.location.href="./product.html"
             }
         },
     }).mount('#app')
