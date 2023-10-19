@@ -27,15 +27,15 @@
                             <a class="nav-link" href="./index.html">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="./product.html">Product</a>
+                            <a class="nav-link" href="./product.html">Product</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="./orders.html">Orders</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item active">
                             <span class="badge alert-primary"
                                 style="float:right;margin-bottom:-10px;color:white;background-color: blue;">{{totalCart}}</span>
-                            <a class="nav-link" href="./cart.html">Cart</a>
+                            <a class="nav-link" aria-current="page" href="./cart.html">Cart</a>
                         </li>
                     </ul>
                 </div>
@@ -177,7 +177,29 @@
                 this.totalCart = total;
             },
             submitData(){
-                console.log(this.forms);
+                if(this.cartData.length <= 0){
+                    alert("Keranjang Kosong, Belanja dulu !!");
+                    window.location.href = "./product.html";
+                }else{
+                    let totalOrder = parseInt(localStorage.totalOrder); 
+                    let storageName = "order_";
+                    if(totalOrder){
+                        totalOrder = totalOrder+1;
+                        storageName = storageName+(totalOrder-1).toString();
+                    }else{
+                        totalOrder=1;
+                        storageName = storageName+"0";
+                    }
+                    this.forms.cart = this.cartData;
+                    this.forms.totalPrice = this.totalPrice;
+                    localStorage.setItem(storageName,JSON.stringify(this.forms));
+                    localStorage.setItem("totalOrder",totalOrder);
+                    localStorage.removeItem("cart");
+                    this.forms = {};
+                    this.getCartDetail();
+                    alert("Order Processed");
+                    window.location.href = "./orders.html";
+                }
             }
         },
         mounted() {
